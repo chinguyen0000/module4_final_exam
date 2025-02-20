@@ -76,7 +76,7 @@
         </tr>
         </tbody>
     </table>
-    <button class="btn btn-danger" type="submit">Xóa</button>
+    <button class="btn btn-danger" type="submit" onsubmit="confirmDelete()">Xóa</button>
 </form>
 
 
@@ -92,19 +92,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     function confirmDelete() {
-        let checkboxes = document.querySelectorAll('input[name="pids"]:checked');
-        if (checkboxes.length === 0) {
-            alert("Vui lòng chọn ít nhất một sản phẩm để xóa!");
-            return false;
-        }
-
-        let selectedProducts = [];
-        checkboxes.forEach((checkbox) => {
-            let productName = checkbox.closest('tr').querySelector('.p-name').innerText;
-            selectedProducts.push(productName);
-        });
-
-        return confirm("Bạn có chắc muốn xóa: " + selectedProducts.join(", ") + " ?");
+        return confirm("Bạn có chắc muốn xóa sản phẩm đã chọn ?");
     }
 </script>
 </body>

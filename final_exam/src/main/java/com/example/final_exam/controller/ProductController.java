@@ -79,9 +79,9 @@ public class ProductController {
     }
 
     @PostMapping("/delete")
-    public String deleteProduct(@RequestParam("pids") List<Integer> pids, RedirectAttributes redirectAttributes) {
-        System.out.println(pids.size());
-        if (pids.isEmpty()) {
+    public String deleteProduct(@RequestParam(value = "pids", required = false) List<Integer> pids, RedirectAttributes redirectAttributes) {
+
+        if (pids == null || pids.isEmpty() ) {
             redirectAttributes.addFlashAttribute("error", "Vui lòng chọn sản phẩm để xóa");
         } else {
             iProductService.deleteAllById(pids);
